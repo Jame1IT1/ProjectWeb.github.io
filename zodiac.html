@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="lo">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ຕຳລາເບິ່ງດວງພື້ນເມືອງ - 12 ລາສີ</title>
+  <!-- Importing Modern Lao and Inter Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Lao:wght@300;400;500;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-gradient-start: #fbf8f3;
+      --bg-gradient-end: #f5efe6;
+      --text-dark: #1a1a1a;
+      --text-muted: #4a4a4a;
+      /* Filled up missing beautiful colors */
+      --accent-green: #1ea966;
+      --gold-accent: #b38f2d;
+      --danger-accent: #c94444;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --font-family: "Noto Sans Lao", "Inter", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: linear-gradient(180deg,
+          var(--bg-gradient-start) 0%,
+          var(--bg-gradient-end) 500px,
+          #ffffff 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* --- NAVIGATION --- */
+    header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    nav a.active {
+      color: var(--accent-green);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      max-width: 1000px;
+      margin: 40px auto 30px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    /* --- INFO BOX (Age Calculation) --- */
+    .info-box {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 24px 32px;
+      backdrop-filter: blur(10px);
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-box p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* --- MAIN CONTENT & GRID --- */
+    .main-content {
+      background: #ffffff;
+      padding: 60px 20px;
+      border-radius: 40px 40px 0 0;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .badge {
+      background: #e8f7f0;
+      color: var(--accent-green);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .zodiac-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      padding: 0 10px;
+    }
+
+    .zodiac-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 28px 24px;
+      transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .zodiac-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Status Bars */
+    .zodiac-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--accent-green);
+    }
+
+    .zodiac-card.gold::before {
+      background: var(--gold-accent);
+    }
+
+    .zodiac-card.danger::before {
+      background: var(--danger-accent);
+    }
+
+    .zodiac-head {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px dashed var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .zodiac-card.gold .zodiac-head {
+      color: var(--gold-accent);
+    }
+
+    .zodiac-card.danger .zodiac-head {
+      color: var(--danger-accent);
+    }
+
+    .zodiac-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .zodiac-text p {
+      margin-bottom: 8px;
+    }
+
+    .zodiac-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- DISCLAIMER --- */
+    .disclaimer-section {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 0 10px;
+    }
+
+    .disclaimer-box {
+      background: #fff9f2;
+      border: 1px solid #ffead2;
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .disclaimer-icon {
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .disclaimer-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #b25e00;
+    }
+
+    .disclaimer-content p {
+      font-size: 0.9rem;
+      color: #7a4600;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="./zodiac.html" class="logo">
+      <img src="./horoscope.png" alt="Logo" class="logo-icon">
+      <span>ຕຳລາພື້ນເມືອງ</span>
+    </a>
+    <nav>
+      <a href="index.html">ໜ້າຫຼັກ</a>
+      <a href="zodiac.html" class="active">12 ລາສີ</a>
+      <a href="birthday.html">ດວງວັນເກີດ</a>
+      <a href="month.html">ດວງເດືອນເກີດ</a>
+      <a href="year.html">ດວງປີເກີດ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero-title">
+      ຄຳທຳນາຍ 12 ລາສີ
+    </h1>
+
+    <div class="info-box">
+      <p>
+        <b>*ວິທີນັບອາຍຸ:</b> <strong>ຜູ້ຊາຍ</strong> ນັບວຽນຂວາ ແລ້ວນັບຕົວເລກໄປເລື້ອຍໆ ຈົນຄົບອາຍຸ (1 ຫາ 12),
+        <strong>ຜູ້ຍິງ</strong> ນັບວຽນຊ້າຍຖອຍຫຼັງ (1, 12, 11,...).<br />
+        <b>ຕົວຢ່າງ:</b> ຜູ້ຊາຍ ອາຍຸ 20 ປີ 20 ÷ 12 ໄດ້ 1 ເຫຼືອ 8 ຜູ້ຊາຍຈະຕົກເລກ 8, ຜູ້ຍິງໃຊ້ຕາຕະລາງຖອຍຫລັງ ຈະຕົກເລກ 6.
+      </p>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div class="section-header">
+      <span class="badge">ຕາມການທຳນາຍ</span>
+      <h2 class="section-title">ຄວາມໝາຍຂອງແຕ່ລະລາສີ</h2>
+    </div>
+
+    <div class="zodiac-grid">
+      <!-- Item 1 -->
+      <div class="zodiac-card gold">
+        <div class="zodiac-head">1. ເຈດີ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>✨ ຈຸດເດັ່ນ:</strong> ໃນປີນີ້
+            ດວງຊະຕາຂອງເຈົ້າຕົກຢູ່ເກນທີ່ດີຫຼາຍ ຈະມີຄວາມສຸກກາຍສະບາຍໃຈ
+            ປາສະຈາກທຸກໂສກໂລກໄພຕ່າງໆ. ບໍ່ວ່າຈະເຮັດສິ່ງໃດ
+            ກໍຈະມີຄົນຄອຍອຸປະຖຳຄ້ຳຊູ, ໃຫ້ຄວາມຊ່ວຍເຫຼືອ ແລະ
+            ເມດຕາເອັນດູເປັນພິເສດ.
+          </p>
+          <p>
+            <strong>💡 ຄຳແນະນຳ:</strong>
+            ເປັນຊ່ວງເວລາທີ່ເໝາະສົມໃນການສ້າງບຸນບາລະມີ, ເຮັດບຸນສິນກິນທານ
+            ເພາະຈະຍິ່ງສົ່ງເສີມໃຫ້ຊີວິດຮຸ່ງເຮືອງ ແລະ ພົບພານແຕ່ສິ່ງດີໆ
+            ເຂົ້າມาໃນຊີວິດຢ່າງບໍ່ຂາດສາຍ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="zodiac-card">
+        <div class="zodiac-head">2. ຊັດເງິນ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>✨ ຈຸດເດັ່ນ:</strong> ເປັນປີແຫ່ງຄວາມຮັ່ງມີ ແລະ
+            ໂຊກລາບທາງດ້ານການເງິນຢ່າງແທ້ຈິງ. ຢິບຈັບສິ່ງໃດກໍກາຍເປັນເງິນເປັນຄຳ.
+            ຈະມີໂຊກລາບຟລຸກໆ ເຂົ້າມาຫາ,
+            ຖານະທາງການເງິນຈະມີຄວາມໝັ້ນຄົງຂຶ້ນເລື້ອຍໆ.
+          </p>
+          <p>
+            <strong>💼 ການງານ & ທຸລະກິດ:</strong> ສຳລັບຜູ້ທີ່ເຮັດທຸລະກິດ,
+            ຄ້າຂາຍ ຫຼື ເຮັດການລົງທຶນ ຈະໄດ້ຮັບກຳໄລຢ່າງງອກງາມ.
+            ມີໂອກາດໄດ້ຮັບເງິນກ້ອນຈາກວຽກງານ ຫຼື ສິ່ງທີ່ເຄີຍລົງທຶນໄວ້ໃນອະດີດ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="zodiac-card danger">
+        <div class="zodiac-head">3. ຄໍຂາດ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>⚠️ ຂໍ້ຄວນລະວັງ:</strong>
+            ປີນີ້ເປັນປີທີ່ຕ້ອງເພີ່ມຄວາມລະມັດລະວັງເປັນພິເສດ ເພາະຕົກເກນເຄາະຮ້າຍ.
+            ໃຫ້ລະວັງເລື່ອງອຸບັດຕິເຫດຈາກການເດີນທາງ,
+            ການເຈັບໄຂ້ໄດ້ປ່ວຍແບບກະທັນຫັນ ຫຼື ມີເລື່ອງເດືອດຮ້ອນໃຈ
+            ທີ່ເກີດຈາກຄົນອ້ອມຂ້າງ. ຄວນຫຼີກລ່ຽງການທະເລາະເບາະແວ້ງ ແລະ
+            ບໍ່ຄວນປະມາດໃນການໃຊ້ຊີວິດ.
+          </p>
+          <p>
+            <strong>💡 ຄຳແນະນຳ:</strong> ແນະນຳໃຫ້ໝັ່ນເຮັດບຸນປ່ອຍສັດ,
+            ຖວາຍສັງຄະທານ ເພື່ອຜ່ອນໜັກໃຫ້ເປັນເບົາ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="zodiac-card gold">
+        <div class="zodiac-head">4. ເຮືອນຫຼວງ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>✨ ຈຸດເດັ່ນ:</strong> ດວງຊະຕາມີຄວາມຈະເລີນຮຸ່ງເຮືອງ ແລະ
+            ມີຄວາມໝັ້ນຄົງໃນຊີວິດສູງ. ຄົນໃນຄອບຄົວຈະຢູ່ເຢັນເປັນສຸກ,
+            ບໍ່ມີເລື່ອງເດືອດຮ້ອນ.
+          </p>
+          <p>
+            <strong>💼 ການງານ & ອະສັງຫາ:</strong> ດ້ານໜ້າທີ່ການງານ
+            ຈະໄດ້ຮັບການເລື່ອນຂັ້ນ, ເລື່ອນຕຳແໜ່ງ ຫຼື ປະສົບຄວາມສຳເລັດໃນການສຶກສາ.
+            ຫາກໃຜທີ່ຄິດຢາກຈະຊື້ເຮືອນ, ທີ່ດິນ ຫຼື ປັບປຸງທີ່ຢູ່ອາໄສ
+            ກໍຖືວ່າເປັນໂອກາດທອງ ແລະ ຈະປະສົບຄວາມສຳເລັດເປັນຢ່າງດີ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="zodiac-card">
+        <div class="zodiac-head">5. ຜາສາດ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>✨ ຈຸດເດັ່ນ:</strong>
+            ປີນີ້ເຈົ້າຈະໄດ້ພົບກັບຄວາມສຸກຄວາມຈະເລີນ ທີ່ມີທັງກຽດຕິຍົດ ແລະ
+            ຊື່ສຽງ. ຄວາມຮັກກໍສົມຫວັງລາບລື່ນ. ມີເກນໄດ້ຮັບສິ່ງຂອງໃໝ່ໆ
+            ທີ່ມີມູນຄ່າສູງ ເຊັ່ນ: ລົດໃໝ່, ເຮືອນໃໝ່ ຫຼື ຂອງຂວັນຊິ້ນໃຫຍ່
+            ທີ່ເຮັດໃຫ້ພາກພູມໃຈ.
+          </p>
+          <p>
+            <strong>🤝 ຜູ້ອຸປະຖຳ:</strong> ຫາກມີອຸປະສັກໃດໆ ເຂົ້າມາ
+            ກໍຈະມີຜູ້ໃຫຍ່ທີ່ມີອຳນາດ ຫຼື
+            ມີບາລະມີເຂົ້າມາຊ່ວຍ微ຫຼືໃຫ້ຜ່ານພົ້ນໄປໄດ້ຢ່າງງ່າຍດາຍ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="zodiac-card danger">
+        <div class="zodiac-head">6. ຣາຫູ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>⚠️ ຂໍ້ຄວນລະວັງ:</strong> ເປັນຊ່ວງເວລາທີ່ຕ້ອງມີສະຕິ ແລະ
+            ຄວາມຮອບຄອບສູງ. ໃຫ້ລະມັດລະວັງການຖືກຫຼອກລວງ, ສໍ້ໂກງ ຫຼື
+            ຖືກຫັກຫຼັງຈາກຄົນທີ່ໄວ້ໃຈ. ຈະມີເລື່ອງໃຫ້ເສຍເງິນເສຍຄຳ
+            ຍ້ອນຄວາມຫູເບົາ.
+          </p>
+          <p>
+            <strong>🏥 ສຸຂະພາບ:</strong> ໃຫ້ລະວັງເລື່ອງສຸຂະພາບ
+            ໂດຍສະເພາະໂລກພະຍາດທີ່ກ່ຽວກັບຄວາມເຄີຍຊິນ ຫຼື ອາການປ່ວຍເຮື້ອຮັງ.
+          </p>
+          <p>
+            <strong>💡 ຄຳແນະນຳ:</strong> ຄວນໝັ່ນຖືສິນ, ຟັງທຳ ແລະ ເຮັດບຸນຕັກບາດ
+            ເພື່ອເສີມດວງຊະຕາ ແລະ ຫຼຸດຜ່ອນແຮງປະທະຈາກສິ່ງບໍ່ດີ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="zodiac-card gold">
+        <div class="zodiac-head">7. ຊັດຄຳ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>👑 ທີ່ສຸດແຫ່ງດວງ:</strong> ຖືເປັນເກນດວງທີ່ດີທີ່ສຸດໃນບັນດາ
+            12 ລາສີ ຂອງຕຳລານີ້. ດວງຊະຕາຈະຂຶ້ນສູງສຸດ, ມີເກນໄດ້ຮັບລາບກ້ອນໃຫຍ່
+            ເປັນເງິນເປັນຄຳ ຫຼື ມໍລະດົກ.
+          </p>
+          <p>
+            <strong>📈 ການງານ & ຄວາມຮັ່ງມີ:</strong> ການງານ, ການຄ້າຂາຍ ຫຼື
+            ກິດຈະການຕ່າງໆ ຈະຂະຫຍາຍຕົວຢ່າງກ້າວກະໂດດ. ຜູ້ຄົນໃຫ້ຄວາມເຄົາລົບນับຖື,
+            ມີຜູ້ນຳເງິນທອງມາໃຫ້ເຖິງທີ່ ແລະ ເປັນປີແຫ່ງການສ້າງຄວາມຮັ່ງມີ
+            ທີ່ສາມາດປ່ຽນແປງຊີວິດໄປໃນທາງທີ່ດີຂຶ້ນໄດ້.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="zodiac-card">
+        <div class="zodiac-head">8. ເທວະດາຂີ່ເຕົ່າ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>🐢 ຄວາມໝັ້ນຄົງ:</strong> ຊີວິດໃນປີນີ້ອາດຈະບໍ່ໄດ້ຫວືຫວາ ຫຼື
+            ຮຸ່ງເຮືອງແບບກະທັນຫັນ ແຕ່ຈະເຕັມໄປດ້ວຍຄວາມໝັ້ນຄົງ, ປອດໄພ ແລະ
+            ຮາບລື່ນ. ບໍ່ວ່າຈະເຮັດສິ່ງໃດ ກໍຈະຄ່ອຍໆ
+            ປະສົບຄວາມສຳເລັດໄປເທື່ອລະກ້າວຢ່າງໝັ້ນຄົງ (ຄືກັນກັບເຕົ່າ).
+          </p>
+          <p>
+            <strong>🛡️ ການປົກປ້ອງ:</strong> ຈະມີສິ່ງສັກສິດ ຫຼື
+            ເທວະດາຄອຍປົກປ້ອງຮັກສາ ແລະ ມີຜູ້ໃຫຍ່ຄອຍໃຫ້ຄຳປຶກສາ ແລະ
+            ຊ່ວຍເຫຼືອຢູ່ເບື້ອງຫຼັງສະເໝີ ປາສະຈາກໄພອັນຕະລາຍ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="zodiac-card danger">
+        <div class="zodiac-head">9. ຄົນໂທດ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>⚠️ ຂໍ້ຄວນລະວັງ:</strong> ເປັນປີທີ່ຕ້ອງຜະເຊີນກັບຄວາມກົດດັນ
+            ແລະ ອຸປະສັກ. ໃຫ້ລະມັດລະວັງເລື່ອງການຖືກໃສ່ຮ້າຍປ້າຍສີ,
+            ຖືກນິນທາວ່າຮ້າຍ ຫຼື ມີຄົນຄອຍຂັດຂວາງຄວາມຈະເລີນ.
+          </p>
+          <p>
+            <strong>🗣️ ຄຳເວົ້າ:</strong> ຄວນລະມັດລະວັງຄຳເວົ້າ ແລະ
+            ການສະແດງອອກເປັນພิເສດ ເພາະອາດຈະນຳພາໄປສູ່ການມີຄະດີຄວາມ ຫຼື
+            ການຜິດຖຽງກັນຢ່າງຮຸນແຮງ. ໃຫ້ອົດທົນ, ປ່ອຍວາງ ແລະ
+            ບໍ່ຄວນເຂົ້າໄປຍຸ່ງກ່ຽວກັບເລື່ອງຂອງຄົນອື່ນ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="zodiac-card gold">
+        <div class="zodiac-head">10. ພໍ່ໝໍ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>🧠 ສະຕິປັນຍາ:</strong> ປີນີ້ເປັນປີແຫ່ງການໃຊ້ສະຕິປັນຍາ ແລະ
+            ຄວາມຮູ້ ຈະມີຄວາມຄິດຄວາມອ່ານທີ່ສະຫຼາດສະຫຼຽວ, ຮຽນຮູ້ສິ່ງໃໝ່ໆ ໄດ້ໄວ
+            ແລະ ມີເກນປະສົບຄວາມສຳເລັດໃນດ້ານການສອບເສັງ ຫຼື ການຄົ້ນຄວ້າ.
+          </p>
+          <p>
+            <strong>🌟 ບົດບາດ:</strong> ເປັນຊ່ວງເວລາທີ່ມີສະເໜ່ໃນດ້ານຄວາມຮູ້,
+            ຈະໄດ້ເປັນທີ່ພິ່ງ, ໃຫ້ຄຳປຶກສາ ຫຼື
+            ເປັນຜູ້ນຳທາງຈິດວິນຍານໃຫ້ແກ່ຄົນອ້ອມຂ້າງ
+            ເຊິ່ງຈະນຳພາຄວາມເຄົາລົບນับຖືມາໃຫ້.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 11 -->
+      <div class="zodiac-card">
+        <div class="zodiac-head">11. ແມ່ມົດ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>💖 ເມດຕາມະຫານິຍົມ:</strong>
+            ດວງຊະຕາໂດດເດັ່ນໃນເລື່ອງຂອງສະເໜ່ ເມດຕາມະຫານິຍົມ. ຈະມີຄົນຮັກແພງ,
+            ເອັນດູ ແລະ ຢາກເຂົ້າມາຜູກມິດໄມຕີຫຼາຍເປັນພິເສດ,
+            ເໝາະສົມກັບວຽກງານທີ່ຕ້ອງໃຊ້ການເຈລະຈາ ຫຼື ການເຂົ້າສັງຄົມ.
+          </p>
+          <p>
+            <strong>⚠️ ຂໍ້ຄວນລະວັງ:</strong>
+            ໃຫ້ລະມັດລະວັງເລື່ອງອາລົມທີ່ອາດຈະແປປວນງ່າຍ, ຄວາມຄິດຫຼາຍ ຫຼື
+            ຄວາມອິດສາຕາຮ້ອນຈາກຄົນອ້ອມຂ້າງ ທີ່ອາດຈະເຮັດໃຫ້ເກີດຄວາມຂັດແຍ້ງເລັກໆ
+            ນ້ອຍໆ ໄດ້.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 12 -->
+      <div class="zodiac-card danger">
+        <div class="zodiac-head">12. ນາກຄະລາດ</div>
+        <div class="zodiac-text">
+          <p>
+            <strong>⚡ ພະລັງອຳນາດ:</strong> ໃນປີນີ້
+            ດວງຊະຕາຂອງເຈົ້າຈະມີພະລັງອຳນາດຫຼາຍ ແຕ່ໃຫ້ລະວັງເລື່ອງຄວາມໃຈຮ້ອນ ແລະ
+            ອາລົມຮຸນແຮງ ທີ່ອາດຈະເຮັດໃຫ້ເສຍວຽກເສຍງານໄດ້.
+          </p>
+          <p>
+            <strong>🌍 ໂຊກລາບທາງໄກ:</strong> ດ້ານດີຄື ຈະມີໂຊກລາບທີ່ມາຈາກທາງໄກ,
+            ການເດີນທາງໄປຕ່າງຖິ່ນຕ່າງແດນຈະນຳຄວາມສຳເລັດມາໃຫ້ ຫຼື
+            ມີເກນມີໂຊກຈາກການສ່ຽງດວງແບບບໍ່ຄາດຝັນ. ຫາກຮູ້ຈັກຄວບຄຸມອາລົມ ແລະ
+            ໃຊ້ຄວາມກ້າຫານໃຫ້ຖືກທາງ ກໍຈະເປັນປີທີ່ປະສົບຄວາມສຳເລັດຢ່າງຍິ່ງໃຫຍ່.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-section">
+      <div class="disclaimer-box">
+        <span class="disclaimer-icon">⚠️</span>
+        <div class="disclaimer-content">
+          <h4>ໝາຍເຫດ:</h4>
+          <p>
+            WEBSITE ນີ້ຄືຄວາມເຊື່ອສ່ວນບຸກຄົນ ແລະ ວິຖີຊີວິດຊົນພື້ນເມືອງຕາມບູຮານ ທີ່ຈັດເຮັດຂຶ້ນເພື່ອການສຶກສາ ແລະ
+            ຮຽນຮູ້ວັດທະນະທຳເທົ່ານັ້ນ ກະລຸນາໃຊ້ວິຈາລະນະຍານໃນການພິຈາລະນາຢ່າງຮອບຄອບ.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

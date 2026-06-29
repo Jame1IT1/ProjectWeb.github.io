@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ຕຳລາເບິ່ງດວງພື້ນເມືອງ - ດວງເດືອນເກີດ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Lao:wght@300;400;500;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-gradient-start: #FBF8F3;
+      --bg-gradient-end: #F5EFE6;
+      --text-dark: #1A1A1A;
+      --text-muted: #666666;
+      --accent-green: #1EA966;
+      --gold-accent: #b38f2d;
+      --danger-accent: #c94444;
+      --card-bg: #FFFFFF;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --font-family: 'Noto Sans Lao', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 500px, #FFFFFF 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* --- NAVIGATION --- */
+    header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    nav a.active {
+      color: var(--accent-green);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    /* --- MAIN CONTENT & GRID --- */
+    .main-content {
+      background: #FFFFFF;
+      padding: 60px 20px;
+      border-radius: 40px 40px 0 0;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .badge {
+      background: #E8F7F0;
+      color: var(--accent-green);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .month-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 0 10px;
+    }
+
+    .month-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 32px 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .month-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Status Tags */
+    .month-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--accent-green);
+    }
+
+    .month-card.gold::before {
+      background: var(--gold-accent);
+    }
+
+    .month-card.danger::before {
+      background: var(--danger-accent);
+    }
+
+    .month-head {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .month-card.gold .month-head {
+      color: var(--gold-accent);
+    }
+
+    .month-card.danger .month-head {
+      color: var(--danger-accent);
+    }
+
+    .month-sub {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .month-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* --- DISCLAIMER --- */
+    .disclaimer-section {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 0 10px;
+    }
+
+    .disclaimer-box {
+      background: #FFF9F2;
+      border: 1px solid #FFEAD2;
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .disclaimer-icon {
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .disclaimer-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #B25E00;
+    }
+
+    .disclaimer-content p {
+      font-size: 0.9rem;
+      color: #7A4600;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="./month.html" class="logo">
+      <img src="./horoscope.png" alt="Logo" class="logo-icon">
+      <span>ຕຳລາພື້ນເມືອງ</span>
+    </a>
+    <nav>
+      <a href="index.html">ໜ້າຫຼັກ</a>
+      <a href="zodiac.html">12 ລາສີ</a>
+      <a href="birthday.html">ດວງວັນເກີດ</a>
+      <a href="month.html" class="active">ດວງເດືອນເກີດ</a>
+      <a href="year.html">ດວງປີເກີດ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero-title">
+      ຄຳທຳນາຍປະຈຳເດືອນເກີດ (ເດືອນ 1 - 12)
+    </h1>
+  </section>
+
+  <main class="main-content">
+    <div class="section-header">
+      <span class="badge">ຕາມການທຳນາຍ</span>
+      <h2 class="section-title">ກວດສອບດວງຕາມຊ່ວງເດືອນເກີດ</h2>
+    </div>
+
+    <div class="month-grid">
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 1 - ມັງກອນ </div>
+        <div class="month-sub">ນັກສູ້ຜູ້ມີຄວາມອົດທົນ ແລະ ຈິງຈັງກັບຊີວິດ</div>
+        <div class="month-text">ມັກມີຄວາມຄິດສ້າງສັນ ເປັນຄົນໃຈໃຫຍ່ ມີຄວາມຮັບຜິດຊອບສູງ ເປັນຜູ້ໃຫຍ່ເກີນອາຍຸ ແລະ
+          ມີລະບຽບວິໄນ. ເໝາະແກ່ການເປັນເຈົ້າຄົນນາຍຄົນ ພັດທະນາຕົນເອງໄດ້ໄວ ເກັບເງິນເກັ່ງ ແລະ ຮັກຄວາມໝັ້ນຄົງ.</div>
+      </div>
+
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 2 - ກຸມພາ </div>
+        <div class="month-sub">ນັກຄິດສ້າງສັນ ຜູ້ຮັກອິດສະຫຼະພາບ</div>
+        <div class="month-text">ມີຄວາມເປັນຕົວຂອງຕົວເອງສູງ ມັກຄວາມແຕກຕ່າງ ແລະ ມີວິໄສທັດກວ້າງໄກ. ເປັນຄົນໃຈດີ
+          ມັກຊ່ວຍເຫຼືອສັງຄົມ ເຂົ້າກັບຄົນງ່າຍ ແຕ່ບາງຄັ້ງກໍມີອາລົມປ່ຽນແປງງ່າຍ ແລະ ຮັກອິດສະຫຼະພາບຫຼາຍ.</div>
+      </div>
+
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 3 - ມີນາ </div>
+        <div class="month-sub">ຜູ້ມີຈິດໃຈອ່ອນໂຍນ ແລະ ຈິນຕະນາການອັນລ້ຳເລີກ</div>
+        <div class="month-text">ເປັນຄົນມີຄວາມຮູ້ສຶກໄວ ອ່ອນໂຍນ ມີເມດຕາ ແລະ ຂີ້ສົງສານ. ມີຈິນຕະນາການສູງ
+          ມັກເລື່ອງສິລະປະດົນຕີ ເປັນຄົນໂຣແມນຕິກ ແຕ່ບາງຄັ້ງກໍໃຈອ່ອນເກີນໄປຈົນຖືກຫຼອກລວງໄດ້ງ່າຍ.</div>
+      </div>
+
+      <div class="month-card gold">
+        <div class="month-head">ເດືອນ 4 - ເມສາ </div>
+        <div class="month-sub">ນັກຮົບຜູ້ກ້າຫານ ແລະ ເຕັມไปด้วยພະລັງງານ</div>
+        <div class="month-text">ເປັນຄົນມີສະເໜ່ ມັກຄວາມມ່ວນຊື່ນ ກ້າຄິດກ້າເຮັດ ມີຄວາມໝັ້ນໃຈສູງ. ໄປໃສກໍມີແຕ່ຄົນຮັກແພງ ແລະ
+          ຄອຍອຸປະຖຳຊ່ວຍເຫຼືອໃນຍາມຍາກ ຫາເງິນເກັ່ງແຕ່ກໍໃຊ້ຈ່າຍໄວຕາມອາລົມ.</div>
+      </div>
+
+      <div class="month-card gold">
+        <div class="month-head">ເດືອນ 5 - ພຶດສະພາ </div>
+        <div class="month-sub">ຜູ້ຮັກຄວາມໝັ້ນຄົງ ແລະ ສິ່ງສວຍງາມໃນຊີວິດ</div>
+        <div class="month-text">ເປັນຄົນໜັກແໜ້ນ ເຊື່ອຖືໄດ້ ມີຄວາມອົດທົນສູງ ແລະ ມັກຄວາມສະດວກສະບາຍ. ມີສະເໜ່ໃນຕົວເອງ
+          ຜູ້ໃຫຍ່ຄອຍເອັນດູ ມັກການວາງແຜນການເງິນທີ່ປອດໄພ ແລະ ຮັກດຽວໃຈດຽວ.</div>
+      </div>
+
+      <div class="month-card gold">
+        <div class="month-head">ເດືອນ 6 - ມິຖຸນາ </div>
+        <div class="month-sub">ນັກສື່ສານຜູ້ມີສະເໜ່ ແລະ ສະຫຼາດຫຼັກແຫຼມ</div>
+        <div class="month-text">ເປັນຄົນຮຽນຮູ້ໄວ ມີໄຫວພິບດີ ເວົ້າເກັ່ງ ແລະ ມະນຸດສຳພັນດີເລີດ. ມັກຄວາມມ່ວນຊື່ນ
+          ປັບຕົວເຂົ້າກັບສັງຄົມໄດ້ງ່າຍ ມີໂຊກມີລາບຈາກການເຈລະຈາ ແລະ ມີຄົນຄອຍຊ່ວຍເຫຼືອສະເໝີ.</div>
+      </div>
+
+      <div class="month-card danger">
+        <div class="month-head">ເດືອນ 7 - ກໍລະກົດ </div>
+        <div class="month-sub">ຜູ້ປົກປ້ອງທີ່ມີຈິດໃຈອ່ອນໂຍນ ແລະ ຮັກຄອບຄົວ</div>
+        <div class="month-text">ຊີວິດຕ້ອງໄດ້ບຸກບືນ ແລະ ອົດທົນສູງ ແຕ່ເປັນຄົນມີຄວາມສາມາດຮອບດ້ານ. ເປັນຄົນຮັກເຮືອນຮັກຄອບຄົວ
+          ເກັບເງິນເກັ່ງ ຈະປະສົບຄວາມສຳເລັດຍ້ອນນ້ຳພັກນ້ຳແຮງແລະຄວາມພະຍາຍາມຂອງຕົນເອງ.</div>
+      </div>
+
+      <div class="month-card danger">
+        <div class="month-head">ເດືອນ 8 - ສິງຫາ </div>
+        <div class="month-sub">ພະຍາສິງຜູ້ສະຫງ່າງາມ ແລະ ມີຄວາມເປັນຜູ້ນຳ</div>
+        <div class="month-text">ມີຄວາມໝັ້ນໃຈໃນຕົວເອງສູງ ໃຈກວ້າງ ຮັກກຽດຮັກສັກສີ. ຊີວິດມັກຈະຕ້ອງຜ່ານອຸປະສັກ ແລະ
+          ການທົດສອບຫຼາຍຢ່າງ ແຕ່ດ້ວຍຄວາມເປັນນັກສູ້ ແລະ ບໍ່ຍອມແພ້ ຈະເຮັດໃຫ້ປະສົບຄວາມສຳເລັດຢ່າງຍິ່ງໃຫຍ່.</div>
+      </div>
+
+      <div class="month-card danger">
+        <div class="month-head">ເດືອນ 9 - ກັນຍາ </div>
+        <div class="month-sub">ນັກວິເຄາະຜູ້ຮັກຄວາມສົມບູນແບບ</div>
+        <div class="month-text">ເປັນຄົນລະອຽດຮອບຄອບ ມັກຄວາມເປັນລະບຽບຮຽບຮ້ອຍ ແລະ ມີເຫດຜົນສູງ. ເປັນນັກແກ້ໄຂບັນຫາທີ່ເກັ່ງກ້າ
+          ຕ້ອງລົງມືເຮັດເອງຈຶ່ງຈະໄດ້ດີ ພ້ອມຕໍ່ສູ້ກັບທຸກວຽກງານຈົນກວ່າຈະສຳເລັດສົມບູນ.</div>
+      </div>
+
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 10 - ຕຸລາ </div>
+        <div class="month-sub">ທູດແຫ່ງຄວາມຍຸດຕິທຳ ແລະ ຄວາມງາມ</div>
+        <div class="month-text">ເປັນຄົນເກັບເງິນເກັ່ງ ມີຄວາມໝັ້ນຄົງໃນຊີວິດສູງ ຮັກຄວາມສະເໝີພາບ ແລະ ຄວາມສະຫງົບ.
+          ເປັນຄົນມີສະເໜ່ ເຂົ້າສັງຄົມເກັ່ງ ມີປັນຍາສະຫຼາດຫຼັກແຫຼມ ແລະ ມັກວາງແຜນອະນາຄົດຢ່າງຮອບຄອບ.</div>
+      </div>
+
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 11 - ພະຈິກ </div>
+        <div class="month-sub">ຜູ້ມີພະລັງເລິກລັບ ແລະ ຄວາມມຸ່ງໝັ້ນອັນແຮງກ້າ</div>
+        <div class="month-text">ມີຄວາມສະຫຼາດຫຼັກແຫຼມ ມີຊິກເຊັນດີ ເກັບຄວາມຮູ້ສຶກເກັ່ງ ແລະ ມີຄວາມມຸ່ງໝັ້ນສູງ.
+          ໂດດເດັ່ນເລື່ອງການບໍລິຫານຈັດການເງິນຄຳ ມັກມີໂຊກລາບແບບບໍ່ຄາດຝັນ ແລະ ມີຖານະໝັ້ນຄົງ.</div>
+      </div>
+
+      <div class="month-card ">
+        <div class="month-head">ເດືອນ 12 - ທັນວາ </div>
+        <div class="month-sub">ນັກສະແຫວງຫາຄວາມຮູ້ ແລະ ຜູ້ຮັກການຜະຈົນໄພ</div>
+        <div class="month-text">ເປັນຄົນມອງໂລກໃນແງ່ດີ ໃຈກວ້າງ ມັກຄວາມສະຫງົບ ແລະ ມີສະຕິປັນຍາດີເລີດ.
+          ຫາເງິນເກັ່ງແລະຮູ້ຈັກຊອກຫາຊ່ອງທາງສ້າງລາຍໄດ້ໃໝ່ໆ ຢູ່ສະເໝີ ຊີວິດໃນໄລຍະຍາວຈະມີຄວາມອຸດົມສົມບູນ.</div>
+      </div>
+    </div>
+
+    <div class="disclaimer-section">
+      <div class="disclaimer-box">
+        <span class="disclaimer-icon">⚠️</span>
+        <div class="disclaimer-content">
+          <h4>ໝາຍເຫດ:</h4>
+          <p>WEBSITE ນີ້ຄືຄວາມເຊື່ອສ່ວນບຸກຄົນ ແລະ ວິຖີຊີວິດຊົນພື້ນເມືອງຕາມບູຮານ ທີ່ຈັດເຮັດຂຶ້ນເພື່ອການສຶກສາ ແລະ
+            ຮຽນຮູ້ວັດທະນະທຳເທົ່ານັ້ນ ກະລຸນາໃຊ້ວິຈາລະນະຍານໃນການພິຈາລະນາຢ່າງຮອບຄອບ.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
