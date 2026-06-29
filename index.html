@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ຕຳລາເບິ່ງດວງພື້ນເມືອງ - ໜ້າຫຼັກ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Lao:wght@300;400;500;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-gradient-start: #FBF8F3;
+      --bg-gradient-end: #F5EFE6;
+      --text-dark: #1A1A1A;
+      --text-muted: #666666;
+      --accent-green: #1EA966;
+      --accent-green-hover: #178752;
+      --card-bg: #FFFFFF;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --font-family: 'Noto Sans Lao', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 500px, #FFFFFF 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* --- NAVIGATION --- */
+    header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    nav a.active {
+      color: var(--accent-green);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      max-width: 1000px;
+      margin: 60px auto 40px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .btn-primary {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: var(--font-family);
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-green-hover);
+    }
+
+    /* --- CONTENT SECTION --- */
+    .main-content {
+      background: #FFFFFF;
+      padding: 80px 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* --- FEATURE CARDS GRID --- */
+    .cards-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 0 10px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background: #F4F4F4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.2rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      padding-top: 16px;
+    }
+
+    .card-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* --- DISCLAIMER BANNER --- */
+    .disclaimer-section {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 0 10px;
+    }
+
+    .disclaimer-box {
+      background: #FFF9F2;
+      border: 1px solid #FFEAD2;
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .disclaimer-icon {
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .disclaimer-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #B25E00;
+    }
+
+    .disclaimer-content p {
+      font-size: 0.9rem;
+      color: #7A4600;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="./index.html" class="logo">
+      <img src="./horoscope.png" alt="Logo" class="logo-icon">
+      <span>ຕຳລາພື້ນເມືອງ</span>
+    </a>
+    <nav>
+      <a href="index.html" class="active">ໜ້າຫຼັກ</a>
+      <a href="zodiac.html">12 ລາສີ</a>
+      <a href="birthday.html">ດວງວັນເກີດ</a>
+      <a href="month.html">ດວງເດືອນເກີດ</a>
+      <a href="year.html">ດວງປີເກີດ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero-title">
+      ຕຳລາເບິ່ງດວງພື້ນເມືອງ
+    </h1>
+    <p class="hero-subtitle">
+      ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ WEBSITE ຂໍ້ມູນຄຳທຳນາຍແບບບູຮານພື້ນເມືອງ ເພື່ອຄົ້ນຫາເສັ້ນທາງການໃຊ້ຊີວິດ ແລະ
+      ຄວາມໝາຍຂອງຊີວິດຕາມຫຼັກຕຳລາພື້ນເມືອງ.
+    </p>
+    <div class="hero-buttons">
+      <a href="#features" class="btn-primary">ເລີ່ມທຳນາຍດວງຊະຕາ</a>
+      </a>
+    </div>
+  </section>
+
+  <main class="main-content" id="features">
+    <div class="section-header">
+      <h2 class="section-title">ເລືອກສຶກສາ ແລະ ເບິ່ງດວງຊະຕາຂອງທ່ານ</h2>
+    </div>
+
+    <div class="cards-grid">
+      <a href="zodiac.html" class="card">
+        <div>
+          <div class="card-icon">🌟</div>
+          <h3 class="card-title">12 ລາສີ</h3>
+          <p class="card-description">ກວດເຊັກດວງຊະຕາປະຈຳລາສີເກີດຂອງທ່ານ ພ້ອມຂໍ້ແນະນຳການເສີມດວງ ແລະ ສິ່ງທີ່ຄວນລະວັງ.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-tag">ດວງປີລາສີ</span>
+        </div>
+      </a>
+
+      <a href="birthday.html" class="card">
+        <div>
+          <div class="card-icon">📅</div>
+          <h3 class="card-title">ດວງວັນເກີດ</h3>
+          <p class="card-description">ວິເຄາະດວງຊະຕາຕາມວັນທັງ 7 ບອກທັງຈຸດເດັ່ນ ຈຸດດ້ອຍ ແລະ ສີມຸງຄຸນປະຈຳວັນເກີດ.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-tag">ວັນເກີດທັງ 7 ມື້</span>
+        </div>
+      </a>
+      
+      <a href="month.html" class="card">
+        <div>
+          <div class="card-icon">🌙</div>
+          <h3 class="card-title">ດວງເດືອນເກີດ</h3>
+          <p class="card-description">ທຳນາຍອຸປະນິໄສ ແລະ ວາດສະໜາຊີວິດຕາມເດືອນເກີດທາງຈັນທະຄະຕິແບບບູຮານ.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-tag">ທຳນາຍຕາມເດືອນ</span>
+        </div>
+      </a>
+      
+      <a href="year.html" class="card">
+        <div>
+          <div class="card-icon">🗓️</div>
+          <h3 class="card-title">ດວງປີເກີດ</h3>
+          <p class="card-description">ເບິ່ງພາບລວມຊີວິດ ຄວາມກ້າວໜ້າ ແລະ ວິທີການແກ້ໄຂເຄາະກຳຕາມຮອບປີເກີດ 12 ສັດ.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-tag">ປີເກີດສັດ</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="disclaimer-section">
+      <div class="disclaimer-box">
+        <span class="disclaimer-icon">⚠️</span>
+        <div class="disclaimer-content">
+          <h4>ໝາຍເຫດ:</h4>
+          <p>WEBSITE ນີ້ຄືຄວາມເຊື່ອສ່ວນບຸກຄົນ ແລະ ວິຖີຊີວິດຊົນພື້ນເມືອງຕາມບູຮານ ທີ່ຈັດເຮັດຂຶ້ນເພື່ອການສຶກສາ ແລະ
+            ຮຽນຮູ້ວັດທະນະທຳເທົ່ານັ້ນ ກະລຸນາໃຊ້ວິຈາລະນະຍານໃນການພິຈາລະນາຢ່າງຮອບຄອບ.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
